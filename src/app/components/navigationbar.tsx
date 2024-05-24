@@ -12,72 +12,114 @@ import {
   navigationMenuTriggerStyle,
   NavigationMenuViewport,
 } from "../../components/ui/navigation-menu"
+import Image from "next/image";
+import { Input } from "@/components/ui/input";
 
 export default function NavigationBar() {
   return (
-    <div className=" flex justify-center fixed ">
+    <div className=" flex fixed bg-white w-full items-center ">
       <NavigationMenu>
-        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-        <NavigationMenuList>
+        <Link href="/">
+          <Image
+            src={'/logo.png'}
+            alt="INDMoney Logo"
+            width={85}
+            height={85}
+            className=" ml-36 "
+          />
+        </Link>
+        <div className=" relative ">
+          <Image
+            src={'/search.png'}
+            alt="INDMoney Logo"
+            width={20}
+            height={20}
+            className=" ml-4 my-2.5 absolute "
+          />
+          <Input type="text" placeholder="Search" className=" rounded-3xl pl-8 ml-2 " />
+        </div>
+        <NavigationMenuList className=" ml-24 ">
+          <NavigationMenu>
+            <NavigationMenuItem>
+              <NavigationMenuTrigger>Invest</NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <Link href="/stocks">
+                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                    INDstocks
+                  </NavigationMenuLink>
+                </Link>
+                <Link href="/mutual-funds">
+                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                    Mututal Funds
+                  </NavigationMenuLink>
+                </Link>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+          </NavigationMenu>
           <NavigationMenuItem>
-            <NavigationMenuTrigger>Invest</NavigationMenuTrigger>
-            <NavigationMenuContent>
-              <Link href="/stocks">
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  Stocks
-                </NavigationMenuLink>
-              </Link>
-              <Link href="/mutual-funds">
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  Mututal Funds
-                </NavigationMenuLink>
-              </Link>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
-          <NavigationMenuItem>
-            <Link href="/learn">
+            <Link href="/learn" legacyBehavior passHref>
               <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                 Learn
               </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <Link href="/features">
+            <Link href="/features" legacyBehavior passHref>
               <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                 Features
               </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <Link href="/pricing">
+            <Link href="/pricing" legacyBehavior passHref>
               <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                 Pricing
               </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <Link href="/blog">
+            <Link href="/blog" legacyBehavior passHref>
               <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                 Blog
               </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>
-          <NavigationMenuItem>
-            <NavigationMenuTrigger>Disclosure</NavigationMenuTrigger>
-            <NavigationMenuContent>
-              <Link href="/comlaint-status">
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  Complaint Status
-                </NavigationMenuLink>
-              </Link>
-              <Link href="/sebi-invester-charter">
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                  SEBI Investor Charter - Investment Advisor
-                </NavigationMenuLink>
-              </Link>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
+          <NavigationMenu>
+            <NavigationMenuItem>
+              <NavigationMenuTrigger>Disclosure</NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <Link href="/comlaint-status">
+                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                    Complaint Status
+                  </NavigationMenuLink>
+                </Link>
+                <Link href="/sebi-invester-charter">
+                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                    SEBI Investor Charter
+                  </NavigationMenuLink>
+                </Link>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+          </NavigationMenu>
         </NavigationMenuList>
+        <button type="button" value="help centre" className=" ml-8 bg-[#F5F5F8] rounded-full p-2 ">
+          <Link href="/customer-service">
+            <Image
+              src={'/cs.png'}
+              alt="Customer Servive Button"
+              width={20}
+              height={20}
+            />
+          </Link>
+        </button>
+        <button type="button" className=" ml-4 bg-[#F5F5F8] rounded-2xl px-3 py-2 ">
+          <Link href="/login">Log In
+          </Link>
+        </button>
+        <button type="button" className=" ml-4 rounded-lg px-3 py-2 bg-lime-500 ">
+          <Link href="/signup">Sign Up
+          </Link>
+        </button>
       </NavigationMenu>
     </div>
   )

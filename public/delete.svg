@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="19px" viewBox="0 0 18 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>941FE210-F4C1-4F1A-B1E1-2D12AAC28AAB@2x</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="0-Dashboard" transform="translate(-1102.000000, -872.000000)">
+            <g id="Group-18" transform="translate(1102.000000, 872.000000)">
+                <g id="delete" fill="#017AFF" fill-rule="nonzero">
+                    <path d="M17.4,2 L0.6,2 C0.26862915,2 0,2.26862915 0,2.6 C0,2.93137085 0.26862915,3.2 0.6,3.2 L2.4,3.2 L2.4,16.4 C2.4,17.3941126 3.20588745,18.2 4.2,18.2 L13.8,18.2 C14.7941126,18.2 15.6,17.3941126 15.6,16.4 L15.6,3.2 L17.4,3.2 C17.7313709,3.2 18,2.93137085 18,2.6 C18,2.26862915 17.7313709,2 17.4,2 Z" id="Shape-path"></path>
+                    <path d="M6,1.2 L12,1.2 C12.3313708,1.2 12.6,0.93137085 12.6,0.6 C12.6,0.26862915 12.3313708,0 12,0 L6,0 C5.66862915,0 5.4,0.26862915 5.4,0.6 C5.4,0.93137085 5.66862915,1.2 6,1.2 Z" id="Path"></path>
+                </g>
+                <g id="Group-17" transform="translate(4.500000, 6.000000)" fill="#FFFFFF">
+                    <rect id="Rectangle" x="0" y="0" width="1" height="9"></rect>
+                    <rect id="Rectangle" x="8" y="0" width="1" height="9"></rect>
+                    <rect id="Rectangle" x="4" y="0" width="1" height="9"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
