@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import NavigationBar from './components/navigationbar';
 import NavigationBarAfterLogin from "./components/navigationbarafterlogin";
+import Footer from "./components/footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,12 +21,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={` ${inter.className} flex flex-col gap-2 `}>
+      <body className={` ${inter.className} flex flex-col `}>
         {session && <NavigationBarAfterLogin />}
         {!session && <NavigationBar />}
         <div className=" mt-24 ">
           {children}
         </div>
+        <Footer />
       </body>
     </html>
   );
