@@ -39,7 +39,7 @@ export default function NavigationBarAfterLogin() {
           />
           <Input type="text" placeholder="Search" className=" rounded-3xl pl-8 ml-2 " />
         </div>
-        <button type="button" className=" bg-[#F5F5F8] rounded-2xl px-4 py-2 ml-36 border border-cyan-600 text-blue-600 ">
+        <button type="button" className=" bg-[#F5F5F8] rounded-2xl px-4 py-2 ml-24 border border-cyan-600 text-blue-600 ">
           <Link href="/dashboard">Dashboard
           </Link>
         </button>
@@ -51,7 +51,15 @@ export default function NavigationBarAfterLogin() {
           <Link href="/investments/mutual-funds">Mutual Funds
           </Link>
         </button>
-        <button type="button" value="help centre" className=" ml-32 rounded-full p-2 ">
+        <button type="button" className=" ml-4 bg-[#F5F5F8] rounded-2xl px-4 py-2 ">
+          <Link href="/investments/fixed-deposits">Fixed Deposits
+          </Link>
+        </button>
+        <button type="button" className=" ml-4 bg-[#F5F5F8] rounded-2xl px-4 py-2 ">
+          <Link href="/investments/us-stocks">US Stocks
+          </Link>
+        </button>
+        <button type="button" value="help centre" className=" ml-8 rounded-full p-2 ">
           <Link href="/watchlists">
             <Image
               src={'/watchlist.png'}
