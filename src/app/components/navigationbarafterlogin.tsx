@@ -14,7 +14,7 @@ import {
 } from "../../components/ui/navigation-menu"
 import Image from "next/image";
 import { Input } from "@/components/ui/input";
-import DashboardSidebar from "./dashboardsidebar";
+import DashboardSidebar from "./dashboard/dashboardsidebar";
 
 export default function NavigationBarAfterLogin() {
   return (

@@ -4,10 +4,9 @@ import "./globals.css";
 import NavigationBar from './components/navigationbar';
 import NavigationBarAfterLogin from "./components/navigationbarafterlogin";
 import Footer from "./components/footer";
+import user from './lib/utils/user';
 
 const inter = Inter({ subsets: ["latin"] });
-
-const session = true;
 
 export const metadata: Metadata = {
   title: "INDMoney: Track, Plan & Invest in Stocks, SIP in Mutual Funds to Grow Your Wealth",
@@ -22,8 +21,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={` ${inter.className} flex flex-col `}>
-        {session && <NavigationBarAfterLogin />}
-        {!session && <NavigationBar />}
+        {user && <NavigationBarAfterLogin />}
+        {!user && <NavigationBar />}
         <div className=" mt-24 ">
           {children}
         </div>

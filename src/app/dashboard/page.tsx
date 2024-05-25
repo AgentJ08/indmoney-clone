@@ -1,8 +1,8 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
-import AssetDialogBox from "../components/assetdialogbox";
-import AccordianBox from "../components/accordionbox";
+import AssetDialogBox from "../components/dashboard/assetdialogbox";
+import AccordianBox from "../components/dashboard/accordionbox";
 import { Progress } from "@/components/ui/progress"
 import Link from "next/link";
 
