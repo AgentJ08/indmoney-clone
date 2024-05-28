@@ -1,12 +1,9 @@
 "use client";
 import AssetDialogBox from "@/app/components/investments/stocks/assetdialogbox";
-import Collections from "@/app/components/stocks/collections";
 import IndexCard from "@/app/components/stocks/indexcard";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { Separator } from "@/components/ui/separator"
-import StocksCarousel from "@/app/components/investments/stocks/stockscarousel";
 
 
 export default function Home() {
@@ -46,14 +43,64 @@ export default function Home() {
         </div>
       </div>
       <div className=" flex flex-row gap-8 text-sm ml-48 p-2 ">
-        <Link href={'/investments/stocks'} className=" border-blue-500 border-b-2 p-2 text-blue-500 "><button>Invest</button></Link>
-        <Link href={'/investments/stocks/portfolio/ind-stocks'} className=" p-2 "><button>My Stocks (INDstocks)</button></Link>
+        <Link href={'/investments/stocks'} className=" p-2 "><button>Invest</button></Link>
+        <Link href={'/investments/stocks/portfolio/ind-stocks'} className=" border-blue-500 border-b-2 p-2 text-blue-500 "><button>My Stocks (INDstocks)</button></Link>
         <Link href={'/investments/stocks/orders/ind-stocks'} className=" p-2 "><button>Orders</button></Link>
         <Link href={'/investments/stocks/watchlists/ind-stocks'} className=" p-2 "><button>Watchlists</button></Link>
       </div>
-      <Separator className=" -my-6 " />
-      <StocksCarousel />
-      <Collections />
+      <div className=" ml-48  "><button className=" rounded-full bg-blue-500 text-white px-4 py-2 h-10 ">My holdings</button></div>
+      <div className=" flex flex-col bg-white gap-4 border rounded-lg ml-48 p-8 h-full w-[800px] mb-8 ">
+        <div className=" flex flex-row gap-4 font-bold text-lg justify-between ">
+          <p>Instrument</p>
+          <p>Qty.</p>
+          <p>Avg. Cost</p>
+          <p>LTP</p>
+          <p>Cur. Val</p>
+          <p>P&L</p>
+          <p>Net Chg.</p>
+          <p>Day Chg.</p>
+        </div>
+        <div className=" flex flex-row gap-4 justify-between ">
+          <p>Instrument</p>
+          <p>Qty.</p>
+          <p>Avg. Cost</p>
+          <p>LTP</p>
+          <p>Cur. Val</p>
+          <p>P&L</p>
+          <p>Net Chg.</p>
+          <p>Day Chg.</p>
+        </div>
+        <div className=" flex flex-row gap-4 justify-between ">
+          <p>Instrument</p>
+          <p>Qty.</p>
+          <p>Avg. Cost</p>
+          <p>LTP</p>
+          <p>Cur. Val</p>
+          <p>P&L</p>
+          <p>Net Chg.</p>
+          <p>Day Chg.</p>
+        </div>
+        <div className=" flex flex-row gap-4 justify-between ">
+          <p>Instrument</p>
+          <p>Qty.</p>
+          <p>Avg. Cost</p>
+          <p>LTP</p>
+          <p>Cur. Val</p>
+          <p>P&L</p>
+          <p>Net Chg.</p>
+          <p>Day Chg.</p>
+        </div>
+        <div className=" flex flex-row gap-4 justify-between ">
+          <p>Instrument</p>
+          <p>Qty.</p>
+          <p>Avg. Cost</p>
+          <p>LTP</p>
+          <p>Cur. Val</p>
+          <p>P&L</p>
+          <p>Net Chg.</p>
+          <p>Day Chg.</p>
+        </div>
+      </div>
     </div>
   );
 }
