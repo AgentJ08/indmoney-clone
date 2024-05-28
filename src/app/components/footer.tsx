@@ -5,7 +5,7 @@ import React from 'react'
 
 const Footer = () => {
     return (
-        <div className=' flex flex-row h-[450px] bg-[#191C1F] text-white '>
+        <div className=' flex flex-row h-[450px] bg-[#191C1F] text-white min-w-[100%] '>
             <div className=' basis-3/6 flex flex-col justify-center gap-6 px-32 '>
                 <div>
                     <Image src={'/IND_logo_white_tm.avif'} alt='INDMoney Logo' width={125} height={100} />
