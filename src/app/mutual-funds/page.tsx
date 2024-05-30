@@ -1,7 +1,7 @@
 import Image from "next/image";
-import Hero from "../components/mfs/hero";
-import StartSIP from "../components/mfs/startsip";
-import TrendingMFs from "../components/mfs/trendingmfs";
+import Hero from "../components/mutual-funds/hero";
+import StartSIP from "../components/mutual-funds/startsip";
+import TrendingMFs from "../components/mutual-funds/trendingmfs";
 
 export default function Home() {
   return (

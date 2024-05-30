@@ -1,5 +1,5 @@
 "use client";
-import TickerChart from '@/app/components/stocks/tickerchart';
+import TickerChart from '@/app/components/tickerchart';
 import Image from 'next/image';
 import { redirect, usePathname } from 'next/navigation'
 import React, { useState } from 'react'

@@ -31,7 +31,7 @@ const TrendingMFs = () => {
                             <div className=' basis-1/12 flex justify-end '>Fund Size (Cr)</div>
                             <div className=' basis-1/12 flex justify-center '></div>
                         </div>
-                        <Link href={'/mutual-funds/ab-psu'}>
+                        <Link href={'/mutual-funds/ABSLPSU'}>
                             <div className=' flex flex-row gap-4 border-b border-b-slate-500 hover:bg-slate-100 items-center p-2'>
                                 <div className=' basis-7/12 flex justify-start '>
                                     <div className=' flex flex-row gap-2 items-center '>
