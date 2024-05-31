@@ -31,6 +31,7 @@ export default function Home() {
       setLoading(true);
       const response = await axios.post("/api/users/login", user);
       router.push("/dashboard");
+      router.refresh()
 
     } catch (error: any) {
       console.log("Login failed", error.message);

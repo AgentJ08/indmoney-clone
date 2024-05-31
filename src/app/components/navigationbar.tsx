@@ -15,9 +15,26 @@ import {
 import Image from "next/image";
 import { Input } from "@/components/ui/input";
 import DashboardSidebar from "./dashboard/dashboardsidebar";
-import { user } from '../../middleware'
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export default function NavigationBar() {
+
+  const [user, setUser] = useState<boolean>(false)
+  console.log('User from navbar: ', user)
+
+  useEffect(() => {
+    getUserDetails();
+  })
+
+  const getUserDetails = async () => {
+    const res = await axios.get('/api/users/auth')
+    if(res.data.data.user) setUser(true);
+    else setUser(false);
+  }
+
+  console.log('User from navbar: ', user)
+
 
   return (
     <>

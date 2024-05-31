@@ -23,6 +23,7 @@ const DashboardSidebar = () => {
         try {
             await axios.get('/api/users/logout');
             router.push('/login')
+            router.refresh()
         } catch (error: any) {
             console.log(error.message)
         }
