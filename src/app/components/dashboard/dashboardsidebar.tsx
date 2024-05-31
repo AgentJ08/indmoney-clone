@@ -1,5 +1,5 @@
+"use client";
 import React from 'react'
-
 import {
     Sheet,
     SheetContent,
@@ -11,8 +11,23 @@ import {
 import Link from 'next/link'
 import Image from 'next/image'
 import { ScrollArea } from '@/components/ui/scroll-area'
+import axios from 'axios'
+import { useRouter } from 'next/navigation'
+import { Button } from '@/components/ui/button';
 
 const DashboardSidebar = () => {
+
+    const router = useRouter();
+
+    const logout = async () => {
+        try {
+            await axios.get('/api/users/logout');
+            router.push('/login')
+        } catch (error: any) {
+            console.log(error.message)
+        }
+    }
+
     return (
         <Sheet>
             <SheetTrigger><Image src={'/menu.png'} alt="Profile Menu" width={20} height={20} className=" ml-4 " /></SheetTrigger>
@@ -99,12 +114,12 @@ const DashboardSidebar = () => {
                             <p className=' text-[#757779] '>Need Help?</p>
                         </div>
                     </Link>
-                    <Link href={'/logout'}>
+                    <Button onClick={() => logout()}>
                         <div className=' flex flex-row gap-4 p-2 px-6 -mx-6 hover:bg-gray-100 '>
                             <Image src={'/logout.svg'} alt='dashboard icon' width={20} height={20} />
                             <p className=' text-[#ff4646] '>Logout</p>
                         </div>
-                    </Link>
+                    </Button>
                     <Link href={'/profile/delete-account'}>
                         <div className=' flex flex-row gap-4 p-2 px-6 -mx-6 hover:bg-gray-100 '>
                             <Image src={'/delete.svg'} alt='dashboard icon' width={20} height={20} />

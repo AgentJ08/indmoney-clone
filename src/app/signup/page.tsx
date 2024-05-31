@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button"
@@ -11,8 +12,29 @@ import {
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { useRouter } from "next/navigation";
+import React from "react";
+import axios from "axios";
 
 export default function Home() {
+
+  const router = useRouter();
+  const [user, setUser] = React.useState({
+    name: "",
+    email: "",
+    password: "",
+  })
+
+  const onSignup = async () => {
+    try {
+      const response = await axios.post("/api/users/signup", user);
+      router.push("/login");
+
+    } catch (error: any) {
+      console.log("Signup failed", error.message);
+    }
+  }
+
   return (
     <div className=" flex flex-row gap-8 ">
       <Image src={'/login/b2.webp'} alt="banner" width={600} height={500} />
@@ -27,27 +49,26 @@ export default function Home() {
           <CardContent>
             <form>
               <div className="grid w-full items-center gap-4">
-              <div className="flex flex-col space-y-1.5">
+                <div className="flex flex-col space-y-1.5">
                   <Label htmlFor="name">Name</Label>
-                  <Input type="text" id="name" placeholder="John Doe" />
+                  <Input type="text" id="name" placeholder="John Doe" value={user.name}
+                    onChange={(e) => setUser({ ...user, name: e.target.value })} />
                 </div>
                 <div className="flex flex-col space-y-1.5">
                   <Label htmlFor="email">Email</Label>
-                  <Input type="email" id="email" placeholder="abc@example.com" />
+                  <Input type="email" id="email" placeholder="abc@example.com" value={user.email}
+                    onChange={(e) => setUser({ ...user, email: e.target.value })} />
                 </div>
                 <div className="flex flex-col space-y-1.5">
                   <Label htmlFor="password">Password</Label>
-                  <Input type="password" id="password" placeholder="********" />
-                </div>
-                <div className="flex flex-col space-y-1.5">
-                  <Label htmlFor="rpassword">Re-enter Password</Label>
-                  <Input type="password" id="rpassword" placeholder="********" />
+                  <Input type="password" id="password" placeholder="********" value={user.password}
+                    onChange={(e) => setUser({ ...user, password: e.target.value })} />
                 </div>
               </div>
             </form>
           </CardContent>
           <CardFooter className="flex justify-around">
-            <Button type="submit" >Sign Up</Button>
+            <Button onClick={onSignup}>Sign Up</Button>
           </CardFooter>
         </Card>
         <div className=" font-gray-500 text-sm ">By clicking signup, you agree to our <Link href={'/terms-of-services'} className=" text-blue-600 ">Terms & Conditions.</Link></div>

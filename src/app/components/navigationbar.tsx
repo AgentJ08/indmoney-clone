@@ -16,7 +16,7 @@ import Image from "next/image";
 import { Input } from "@/components/ui/input";
 import DashboardSidebar from "./dashboard/dashboardsidebar";
 
-import user from "../lib/utils/user";
+const user = false;
 
 export default function NavigationBar() {
   return (

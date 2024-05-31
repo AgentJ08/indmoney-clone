@@ -3,8 +3,10 @@ import TickerChart from '@/app/components/tickerchart';
 import Image from 'next/image';
 import { redirect, usePathname } from 'next/navigation'
 import React, { useState } from 'react'
-import { user, kyc } from '@/app/lib/utils/user';
 import Link from 'next/link';
+
+const user = false;
+const kyc = false;
 
 const StockDetails = () => {
 
