@@ -15,10 +15,10 @@ import {
 import Image from "next/image";
 import { Input } from "@/components/ui/input";
 import DashboardSidebar from "./dashboard/dashboardsidebar";
-
-const user = false;
+import { user } from '../../middleware'
 
 export default function NavigationBar() {
+
   return (
     <>
       {!user && (
