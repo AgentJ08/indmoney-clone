@@ -115,7 +115,7 @@ const Collections = () => {
           <div className=' flex flex-col gap-2 bg-white rounded-lg border justify-center items-center hover:scale-95 px-4 py-6 w-48 h-32 '>
             <Image src={'/stocks/nifty50.avif'} alt='dma' width={40} height={40} />
             <div className=' flex flex-col gap-0 items-center '>
-              <p className=' text-sm font-semibold text-gray-500 '>India's Top 50 Stocks</p>
+              <p className=' text-sm font-semibold text-gray-500 '>India&apos;s Top 50 Stocks</p>
             </div>
           </div>
         </Link>

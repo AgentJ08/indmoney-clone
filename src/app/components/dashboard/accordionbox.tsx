@@ -106,7 +106,7 @@ const AccordianBox = () => {
                         <Link href={'/help'}>
                             <div className=' flex flex-col gap-1 '>
                                 <Image src={'/accordionbox/health.avif'} alt='health' width={20} height={20} />
-                                <p>FAQ's</p>
+                                <p>FAQ&apos;s</p>
                             </div>
                         </Link>
                         <Link href={'/help'}>

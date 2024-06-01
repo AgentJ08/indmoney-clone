@@ -2,8 +2,9 @@
 import TickerChart from '@/app/components/tickerchart';
 import Image from 'next/image';
 import { redirect, usePathname } from 'next/navigation'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link';
+import axios from 'axios';
 
 const user = false;
 const kyc = false;
@@ -12,13 +13,22 @@ const StockDetails = () => {
 
   const [tab, setTab] = useState("overview")
   const [comp, setComp] = useState("overview")
+  const [stockData, setStockData] = useState("")
 
   var ticker = usePathname();
   ticker = ticker.split('/')[2].toUpperCase();
 
-  // data = getStockData(ticker);
-
   if (ticker != "RELIANCE") redirect('/not-found');
+
+  useEffect(()=>{
+    getStockData();
+  })
+
+  const getStockData = async () => {
+    const res = await axios.get(`/api/stocks/${ticker}`)
+    setStockData(res.data.data.name)
+  }
+
   var widthpercent = 20;
 
   return (
@@ -31,7 +41,7 @@ const StockDetails = () => {
         </div>
         {tab == "overview" && (
           <div className=' flex flex-col gap-4 p-6 bg-white rounded-xl '>
-            <p className=' font-semibold text-xl '>STOCK NAME Share Performance</p>
+            <p className=' font-semibold text-xl '>{stockData} Share Performance</p>
             <div className=' flex flex-col gap-1 '>
               <div className=' flex flex-row justify-between '>
                 <p>LOW</p>
@@ -51,7 +61,7 @@ const StockDetails = () => {
                 <p className=' font-semibold '>PER%</p>
                 <p className=' text-xs text-gray-300 '>Low</p>
               </div>
-              <div><p className=' text-gray-300 '>Day's Volatility: PER%</p></div>
+              <div><p className=' text-gray-300 '>Day&apos;s Volatility: PER%</p></div>
               <div className=' flex flex-row gap-2 items-center '>
                 <p className=' text-xs text-gray-300 '>High</p>
                 <p className=' font-semibold '>PER%</p>

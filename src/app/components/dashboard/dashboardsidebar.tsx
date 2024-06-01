@@ -58,7 +58,7 @@ const DashboardSidebar = () => {
                     <Link href={'/family-dashboard'}>
                         <div className=' flex flex-row gap-4 p-2 px-6 -mx-6 hover:bg-gray-100 '>
                             <Image src={'/dashboard.svg'} alt='dashboard icon' width={20} height={20} />
-                            <p className=' text-[#757779] '>Maheshwari's Family Dashboard</p>
+                            <p className=' text-[#757779] '>Maheshwari&apos;s Family Dashboard</p>
                         </div>
                     </Link>
                     <Link href={'/profile/manage-permissions'}>
