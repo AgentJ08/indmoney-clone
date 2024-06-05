@@ -6,9 +6,9 @@ const stockSchema = new mongoose.Schema({
         required: [true, "Please provide name"],
         unique: true,
     },
-    ticker: {
+    mfticker: {
         type: String,
-        required: [true, "Please provide ticker"],
+        required: [true, "Please provide mfticker"],
         unique: true,
     },
     expenseRatio: {
@@ -27,11 +27,7 @@ const stockSchema = new mongoose.Schema({
         type: String,
         required: [true, "Please provide day's high"]
     },
-    yearLow: {
-        type: String,
-        required: [true, "Please provide year's low"]
-    },
-    Benchmark: {
+    benchmark: {
         type: [String],
         required: [true, "Please provide year's high"]
     },

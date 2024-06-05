@@ -21,7 +21,6 @@ import axios from "axios";
 export default function NavigationBar() {
 
   const [user, setUser] = useState<boolean>(false)
-  console.log('User from navbar: ', user)
 
   useEffect(() => {
     getUserDetails();
@@ -32,8 +31,6 @@ export default function NavigationBar() {
     if(res.data.data.user) setUser(true);
     else setUser(false);
   }
-
-  console.log('User from navbar: ', user)
 
 
   return (

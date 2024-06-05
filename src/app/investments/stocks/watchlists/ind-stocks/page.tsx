@@ -1,15 +1,50 @@
 "use client";
 import AssetDialogBox from "@/app/components/investments/stocks/assetdialogbox";
 import IndexCard from "@/app/components/stocks/indexcard";
+import { Button } from "@/components/ui/button";
+import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 
 export default function Home() {
 
     const [hide, setHide] = useState(false);
     const [watchlist, setWatchlist] = useState(1);
+    const [watchlist1, setWatchlist1] = useState({ name: '', stockTickers: [] })
+    const [watchlist2, setWatchlist2] = useState({ name: '', stockTickers: [] })
+    const [watchlist3, setWatchlist3] = useState({ name: '', stockTickers: [] })
+    const [userid, setUserid] = useState<string>("")
+
+    const router = useRouter();
+
+    useEffect(() => {
+        getUserId();
+        getWatchlists();
+    }, [userid])
+
+    const getUserId = async () => {
+        const res = await axios.get('/api/users/me')
+        setUserid(res.data.data._id)
+    }
+
+    const getWatchlists = async () => {
+        if (userid) {
+            const res1 = await axios.get(`/api/users/watchlist/${userid}_wl1`)
+            setWatchlist1(res1.data.data)
+            const res2 = await axios.get(`/api/users/watchlist/${userid}_wl2`)
+            setWatchlist2(res2.data.data)
+            const res3 = await axios.get(`/api/users/watchlist/${userid}_wl3`)
+            setWatchlist3(res3.data.data)
+        }
+    }
+
+    const removefromwatchlist = async (ticker: any, num: any) => {
+        const response = await axios.post(`/api/stocks/${ticker}/removefromwatchlist/${userid}_wl${num}`)
+        router.refresh()
+    }
 
     return (
         <div className=" flex flex-col gap-8 bg-gray-100 ">
@@ -53,87 +88,57 @@ export default function Home() {
                 <button onClick={() => setWatchlist(1)} className={` rounded-full ${watchlist == 1 ? 'bg-blue-400' : 'bg-white'} px-4 py-2 h-10 `}>My Watchlist 1</button>
                 <button onClick={() => setWatchlist(2)} className={` rounded-full ${watchlist == 2 ? 'bg-blue-400' : 'bg-white'} px-4 py-2 h-10 `}>My Watchlist 2</button>
                 <button onClick={() => setWatchlist(3)} className={` rounded-full ${watchlist == 3 ? 'bg-blue-400' : 'bg-white'} px-4 py-2 h-10 `}>My Watchlist 3</button>
-                <button onClick={() => setWatchlist(4)} className={` rounded-full ${watchlist == 4 ? 'bg-blue-400' : 'bg-white'} px-4 py-2 h-10 `}>My Watchlist 4</button>
-                <button onClick={() => setWatchlist(5)} className={` rounded-full ${watchlist == 5 ? 'bg-blue-400' : 'bg-white'} px-4 py-2 h-10 `}>My Watchlist 5</button>
             </div>
-            {watchlist==1 && (
+            {watchlist == 1 && (
+
                 <div className=" flex flex-col bg-white gap-4 border rounded-lg ml-48 p-8 h-full w-[800px] mb-8 ">
-                    <div className=" flex flex-row gap-4 font-bold text-lg justify-between ">
-                        <p>Instrument</p>
-                        <p>LTP</p>
-                        <p>% Change</p>
-                        <p>Abs. change</p>
-                    </div>
-                    <div className=" flex flex-row gap-4 justify-between ">
-                        <p>Instrument1</p>
-                        <p>LTP1</p>
-                        <p>% Change1</p>
-                        <p>Abs. change1</p>
-                    </div>
+                    <p className=" font-semibold text-xl ">{watchlist1.name}</p>
+                    {watchlist1.stockTickers.map((ticker, i) => {
+                        return (
+                            <div key={i} className=" flex flex-row gap-4 font-bold text-lg justify-between ">
+                                <p>{ticker}</p>
+                                <p>LTP</p>
+                                <p>% Change</p>
+                                <p>Abs. change</p>
+                                <Button className=" rounded-full bg-gray-400 p-2 hover:bg-gray-500 " onClick={() => removefromwatchlist(ticker, 1)}>-</Button>
+                            </div>
+                        )
+                    }
+                    )}
                 </div>
             )}
-            {watchlist==2 && (
+            {watchlist == 2 && (
                 <div className=" flex flex-col bg-white gap-4 border rounded-lg ml-48 p-8 h-full w-[800px] mb-8 ">
-                    <div className=" flex flex-row gap-4 font-bold text-lg justify-between ">
-                        <p>Instrument</p>
-                        <p>LTP</p>
-                        <p>% Change</p>
-                        <p>Abs. change</p>
-                    </div>
-                    <div className=" flex flex-row gap-4 justify-between ">
-                        <p>Instrument2</p>
-                        <p>LTP2</p>
-                        <p>% Change2</p>
-                        <p>Abs. change2</p>
-                    </div>
+                    <p className=" font-semibold text-xl ">{watchlist2.name}</p>
+                    {watchlist2.stockTickers.map((ticker, i) => {
+                        return (
+                            <div key={i} className=" flex flex-row gap-4 font-bold text-lg justify-between ">
+                                <p>{ticker}</p>
+                                <p>LTP</p>
+                                <p>% Change</p>
+                                <p>Abs. change</p>
+                                <Button className=" rounded-full bg-gray-400 p-2 hover:bg-gray-500 " onClick={() => removefromwatchlist(ticker, 2)}>-</Button>
+                            </div>
+                        )
+                    }
+                    )}
                 </div>
             )}
-            {watchlist==3 && (
+            {watchlist == 3 && (
                 <div className=" flex flex-col bg-white gap-4 border rounded-lg ml-48 p-8 h-full w-[800px] mb-8 ">
-                    <div className=" flex flex-row gap-4 font-bold text-lg justify-between ">
-                        <p>Instrument</p>
-                        <p>LTP</p>
-                        <p>% Change</p>
-                        <p>Abs. change</p>
-                    </div>
-                    <div className=" flex flex-row gap-4 justify-between ">
-                        <p>Instrument3</p>
-                        <p>LTP3</p>
-                        <p>% Change3</p>
-                        <p>Abs. change3</p>
-                    </div>
-                </div>
-            )}
-            {watchlist==4 && (
-                <div className=" flex flex-col bg-white gap-4 border rounded-lg ml-48 p-8 h-full w-[800px] mb-8 ">
-                    <div className=" flex flex-row gap-4 font-bold text-lg justify-between ">
-                        <p>Instrument</p>
-                        <p>LTP</p>
-                        <p>% Change</p>
-                        <p>Abs. change</p>
-                    </div>
-                    <div className=" flex flex-row gap-4 justify-between ">
-                        <p>Instrument4</p>
-                        <p>LTP4</p>
-                        <p>% Change4</p>
-                        <p>Abs. change4</p>
-                    </div>
-                </div>
-            )}
-            {watchlist==5 && (
-                <div className=" flex flex-col bg-white gap-4 border rounded-lg ml-48 p-8 h-full w-[800px] mb-8 ">
-                    <div className=" flex flex-row gap-4 font-bold text-lg justify-between ">
-                        <p>Instrument</p>
-                        <p>LTP</p>
-                        <p>% Change</p>
-                        <p>Abs. change</p>
-                    </div>
-                    <div className=" flex flex-row gap-4 justify-between ">
-                        <p>Instrument5</p>
-                        <p>LTP5</p>
-                        <p>% Change5</p>
-                        <p>Abs. change5</p>
-                    </div>
+                    <p className=" font-semibold text-xl ">{watchlist3.name}</p>
+                    {watchlist3.stockTickers.map((ticker, i) => {
+                        return (
+                            <div key={i} className=" flex flex-row gap-4 font-bold text-lg justify-between ">
+                                <p>{ticker}</p>
+                                <p>LTP</p>
+                                <p>% Change</p>
+                                <p>Abs. change</p>
+                                <Button className=" rounded-full bg-gray-400 p-2 hover:bg-gray-500 " onClick={() => removefromwatchlist(ticker, 3)}>-</Button>
+                            </div>
+                        )
+                    }
+                    )}
                 </div>
             )}
         </div>

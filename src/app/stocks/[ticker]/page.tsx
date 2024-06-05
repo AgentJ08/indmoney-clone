@@ -6,14 +6,14 @@ import React, { useEffect, useState } from 'react'
 import Link from 'next/link';
 import axios from 'axios';
 
-const user = false;
-const kyc = false;
+const kyc = true;
 
 const StockDetails = () => {
 
   const [tab, setTab] = useState("overview")
   const [comp, setComp] = useState("overview")
-  const [stockData, setStockData] = useState("")
+  const [stockData, setStockData] = useState({name: '', ticker: '', currPrice: '', dayChange: '', dayLow: '', dayHigh: '', yearLow: '', yearHigh: '', oneMonthReturn: '', threeMonthReturn: '', oneYearReturn: '', fiveYearCAGR: '', prevClose: '', open: '', volume: '', marketCap: '', industry: '', pe: ''})
+  const [user, setUser] = useState<boolean>(false)
 
   var ticker = usePathname();
   ticker = ticker.split('/')[2].toUpperCase();
@@ -22,11 +22,18 @@ const StockDetails = () => {
 
   useEffect(()=>{
     getStockData();
-  })
+    getUserDetails();
+  }, [user])
 
   const getStockData = async () => {
     const res = await axios.get(`/api/stocks/${ticker}`)
-    setStockData(res.data.data.name)
+    setStockData(res.data.data)
+  }
+
+  const getUserDetails = async () => {
+    const res = await axios.get('/api/users/auth')
+    if(res.data.data.user) setUser(true);
+    else setUser(false);
   }
 
   var widthpercent = 20;
@@ -41,7 +48,7 @@ const StockDetails = () => {
         </div>
         {tab == "overview" && (
           <div className=' flex flex-col gap-4 p-6 bg-white rounded-xl '>
-            <p className=' font-semibold text-xl '>{stockData} Share Performance</p>
+            <p className=' font-semibold text-xl '>{stockData.name} Share Performance</p>
             <div className=' flex flex-col gap-1 '>
               <div className=' flex flex-row justify-between '>
                 <p>LOW</p>
@@ -52,19 +59,19 @@ const StockDetails = () => {
                 <span className=' ml-4 '>▲</span>
                 <span className=' ml-4 '>╵</span>
                 <span className=' ml-4 '>╵</span>
-                <span className=' text-gray-400 text-xs '>CURRENT</span>
+                <span className=' text-gray-400 text-xs '>{stockData.currPrice}</span>
               </div>
             </div>
             <div className=' flex flex-row justify-between '>
               <div className=' flex flex-row gap-2 items-center '>
                 <Image src={'/downward.png'} alt='down' width={20} height={20} />
-                <p className=' font-semibold '>PER%</p>
+                <p className=' font-semibold '>{stockData.dayLow}%</p>
                 <p className=' text-xs text-gray-300 '>Low</p>
               </div>
               <div><p className=' text-gray-300 '>Day&apos;s Volatility: PER%</p></div>
               <div className=' flex flex-row gap-2 items-center '>
                 <p className=' text-xs text-gray-300 '>High</p>
-                <p className=' font-semibold '>PER%</p>
+                <p className=' font-semibold '>{stockData.dayHigh}%</p>
                 <Image src={'/upward.png'} alt='down' width={20} height={20} />
               </div>
             </div>
@@ -76,32 +83,32 @@ const StockDetails = () => {
                 <hr />
                 <div className=' flex flex-row justify-between '>
                   <p>Previous Close</p>
-                  <p>PER%</p>
+                  <p>{stockData.prevClose}</p>
                 </div>
                 <hr />
                 <div className=' flex flex-row justify-between '>
                   <p>Open</p>
-                  <p>PER%</p>
+                  <p>{stockData.open}</p>
                 </div>
                 <hr />
                 <div className=' flex flex-row justify-between '>
                   <p>Volume</p>
-                  <p>PER%</p>
+                  <p>{stockData.volume}</p>
                 </div>
                 <hr />
                 <div className=' flex flex-row justify-between '>
                   <p>Upper Circuit</p>
-                  <p>PER%</p>
+                  <p>-</p>
                 </div>
                 <hr />
                 <div className=' flex flex-row justify-between '>
                   <p>Lower Circuit</p>
-                  <p>PER%</p>
+                  <p>-</p>
                 </div>
                 <hr />
                 <div className=' flex flex-row justify-between '>
                   <p>Market Cap</p>
-                  <p>PER%</p>
+                  <p>{stockData.marketCap}</p>
                 </div>
                 <hr />
               </div>
@@ -112,17 +119,17 @@ const StockDetails = () => {
                 <hr />
                 <div className=' flex flex-row justify-between '>
                   <p>1 Month Return</p>
-                  <p>PER%</p>
+                  <p>{stockData.oneMonthReturn}</p>
                 </div>
                 <hr />
                 <div className=' flex flex-row justify-between '>
                   <p>3 Month Return</p>
-                  <p>PER%</p>
+                  <p>{stockData.threeMonthReturn}</p>
                 </div>
                 <hr />
                 <div className=' flex flex-row justify-between '>
                   <p>1 Year Return</p>
-                  <p>PER%</p>
+                  <p>{stockData.oneYearReturn}</p>
                 </div>
                 <hr />
               </div>
@@ -421,7 +428,7 @@ const StockDetails = () => {
             <div className=' flex flex-row gap-3 '>
               <Link href={'/stocks'}>
                 <div className=' flex flex-row gap-2 '>
-                  <Image src={'/accordionbox/indstocks.avif'} alt='in' width={20} height={20} />
+                  <Image src={'/accordionbox/indstocks.png'} alt='in' width={20} height={20} />
                   <p>IN Stocks</p>
                 </div>
               </Link>
@@ -436,14 +443,14 @@ const StockDetails = () => {
           <div className=' flex flex-row gap-3 '>
             <Link href={'/us-stocks'}>
               <div className=' flex flex-row gap-2 '>
-                <Image src={'/accordionbox/indstocks.avif'} alt='in' width={20} height={20} />
-                <p>IN Stocks</p>
+                <Image src={'/accordionbox/usstocks.avif'} alt='in' width={20} height={20} />
+                <p>US Stocks</p>
               </div>
             </Link>
             <Link href={'/fixed-deposit'}>
               <div className=' flex flex-row gap-2 '>
-                <Image src={'/accordionbox/mf.avif'} alt='in' width={20} height={20} />
-                <p>Mutual Fund</p>
+                <Image src={'/accordionbox/fd.avif'} alt='in' width={20} height={20} />
+                <p>FD&apos;s</p>
               </div>
             </Link>
           </div>
@@ -451,7 +458,7 @@ const StockDetails = () => {
         </div>
       )}
       {user && !kyc && (
-        <Image src={'/kyc.avif'} alt='kyc' width={300} height={400} />
+        <Image src={'/kyc.avif'} alt='kyc' width={200} height={100} />
       )}
     </div>
   )
