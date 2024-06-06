@@ -15,10 +15,13 @@ import { Label } from "@/components/ui/label"
 import { useRouter } from "next/navigation";
 import React from "react";
 import axios from "axios";
+import { useToast } from "@/components/ui/use-toast"
 
 export default function Home() {
 
   const router = useRouter();
+  const { toast } = useToast()
+
   const [user, setUser] = React.useState({
     name: "",
     email: "",
@@ -27,7 +30,8 @@ export default function Home() {
 
   const onSignup = async () => {
     try {
-      const response = await axios.post("/api/users/signup", user);
+      const response = await axios.post("/api/users/signup", user).
+      then(() => {toast({description: "Sign up successful"})} );
       router.push("/login");
 
     } catch (error: any) {

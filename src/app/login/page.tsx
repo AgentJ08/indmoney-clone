@@ -16,10 +16,12 @@ import { Label } from "@/components/ui/label"
 import { useRouter } from "next/navigation";
 import React from "react";
 import axios from "axios";
+import { useToast } from "@/components/ui/use-toast"
 
 export default function Home() {
 
   const router = useRouter();
+  const { toast } = useToast()
   const [loading, setLoading] = React.useState(false);
   const [user, setUser] = React.useState({
     email: "",
@@ -29,7 +31,8 @@ export default function Home() {
   const onLogin = async () => {
     try {
       setLoading(true);
-      const response = await axios.post("/api/users/login", user);
+      const response = await axios.post("/api/users/login", user).
+      then(() => {toast({description: "Logged in successfully"})} );
       router.push("/dashboard");
       router.refresh()
 

@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useToast } from "@/components/ui/use-toast"
 
 
 export default function Home() {
@@ -19,6 +20,7 @@ export default function Home() {
     const [userid, setUserid] = useState<string>("")
 
     const router = useRouter();
+    const { toast } = useToast()
 
     useEffect(() => {
         getUserId();
@@ -42,7 +44,8 @@ export default function Home() {
     }
 
     const removefromwatchlist = async (ticker: any, num: any) => {
-        const response = await axios.post(`/api/stocks/${ticker}/removefromwatchlist/${userid}_wl${num}`)
+        const response = await axios.post(`/api/stocks/${ticker}/removefromwatchlist/${userid}_wl${num}`).
+            then(() => { toast({ description: "Reomved from watchlist successfully" }) })
         router.refresh()
     }
 
