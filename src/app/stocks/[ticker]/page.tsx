@@ -12,7 +12,7 @@ const StockDetails = () => {
 
   const [tab, setTab] = useState("overview")
   const [comp, setComp] = useState("overview")
-  const [stockData, setStockData] = useState({name: '', ticker: '', currPrice: '', dayChange: '', dayLow: '', dayHigh: '', yearLow: '', yearHigh: '', oneMonthReturn: '', threeMonthReturn: '', oneYearReturn: '', fiveYearCAGR: '', prevClose: '', open: '', volume: '', marketCap: '', industry: '', pe: ''})
+  const [stockData, setStockData] = useState({ name: '', ticker: '', currPrice: '', dayChange: '', dayLow: '', dayHigh: '', yearLow: '', yearHigh: '', oneMonthReturn: '', threeMonthReturn: '', oneYearReturn: '', fiveYearCAGR: '', prevClose: '', open: '', volume: '', marketCap: '', industry: '', pe: '' })
   const [user, setUser] = useState<boolean>(false)
 
   var ticker = usePathname();
@@ -20,28 +20,29 @@ const StockDetails = () => {
 
   if (ticker != "RELIANCE") redirect('/not-found');
 
-  useEffect(()=>{
+  useEffect(() => {
+    const getStockData = async () => {
+      const res = await axios.get(`/api/stocks/${ticker}`)
+      setStockData(res.data.data)
+    }
+
+    const getUserDetails = async () => {
+      const res = await axios.get('/api/users/auth')
+      if (res.data.data.user) setUser(true);
+      else setUser(false);
+    }
     getStockData();
     getUserDetails();
   }, [user])
 
-  const getStockData = async () => {
-    const res = await axios.get(`/api/stocks/${ticker}`)
-    setStockData(res.data.data)
-  }
 
-  const getUserDetails = async () => {
-    const res = await axios.get('/api/users/auth')
-    if(res.data.data.user) setUser(true);
-    else setUser(false);
-  }
 
   var widthpercent = 20;
 
   return (
     <div className='flex flex-row gap-4 bg-gray-100 '>
       <div className=' flex flex-col gap-4 ml-48 w-[1000px] '>
-        <TickerChart ticker={ticker}  />
+        <TickerChart ticker={ticker} />
         <div className=" flex flex-row text-sm p-2 mt-8 ">
           <button onClick={() => setTab("overview")} className={` font-semibold px-5 py-2 border-b-2 ${tab == "overview" ? 'text-blue-600 border-b-blue-600' : 'border-b-gray-400'} `}>Overview</button>
           <button onClick={() => setTab("orders")} className={` font-semibold px-5 py-2 border-b-2  ${tab == "orders" ? 'text-blue-600 border-b-blue-600' : 'border-b-gray-400'} `}>Orders</button>

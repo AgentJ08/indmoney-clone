@@ -31,7 +31,7 @@ export default function ProfileLayout({
                 <div className="flex flex-row gap-3 p-2">
                     <div className=" flex justify-center items-center "><p className=" bg-purple-500 rounded-full p-4 text-xl text-white font-bold ">{avatarname}</p></div>
                     <div className=" flex flex-col gap-2 ">
-                        <p className=" text-xl ">{firstname}'s Profile</p>
+                        <p className=" text-xl ">{firstname}&apos;s Profile</p>
                         <p className=" text-green-500 "><span className=" bg-green-300 px-2 py-1 rounded-full text-white  ">✔</span> Profile Verified</p>
                     </div>
                 </div>

@@ -23,25 +23,26 @@ export default function Home() {
     const { toast } = useToast()
 
     useEffect(() => {
+        const getUserId = async () => {
+            const res = await axios.get('/api/users/me')
+            setUserid(res.data.data._id)
+        }
+
+        const getWatchlists = async () => {
+            if (userid) {
+                const res1 = await axios.get(`/api/users/watchlist/${userid}_wl1`)
+                setWatchlist1(res1.data.data)
+                const res2 = await axios.get(`/api/users/watchlist/${userid}_wl2`)
+                setWatchlist2(res2.data.data)
+                const res3 = await axios.get(`/api/users/watchlist/${userid}_wl3`)
+                setWatchlist3(res3.data.data)
+            }
+        }
         getUserId();
         getWatchlists();
     }, [userid])
 
-    const getUserId = async () => {
-        const res = await axios.get('/api/users/me')
-        setUserid(res.data.data._id)
-    }
 
-    const getWatchlists = async () => {
-        if (userid) {
-            const res1 = await axios.get(`/api/users/watchlist/${userid}_wl1`)
-            setWatchlist1(res1.data.data)
-            const res2 = await axios.get(`/api/users/watchlist/${userid}_wl2`)
-            setWatchlist2(res2.data.data)
-            const res3 = await axios.get(`/api/users/watchlist/${userid}_wl3`)
-            setWatchlist3(res3.data.data)
-        }
-    }
 
     const removefromwatchlist = async (ticker: any, num: any) => {
         const response = await axios.post(`/api/stocks/${ticker}/removefromwatchlist/${userid}_wl${num}`).
