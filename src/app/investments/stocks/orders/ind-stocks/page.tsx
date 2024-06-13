@@ -1,14 +1,31 @@
 "use client";
 import AssetDialogBox from "@/app/components/investments/stocks/assetdialogbox";
 import IndexCard from "@/app/components/stocks/indexcard";
+import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 export default function Home() {
 
     const [hide, setHide] = useState(false);
+    const [orders, setOrders] = useState([{
+        ticker: '',
+        createdAt: '',
+        _id: '',
+        ordertype: '',
+        quantity: '',
+        price: ''
+    }])
+
+    useEffect(() => {
+        const getOrders = async () => {
+            const res = await axios.get(`/api/users/orders/ind-stocks`)
+            setOrders(res.data.data)
+        }
+        getOrders();
+    }, [])
 
     return (
         <div className=" flex flex-col gap-8 bg-gray-100 ">
@@ -56,47 +73,21 @@ export default function Home() {
                     <p>Type</p>
                     <p>Qty.</p>
                     <p>Price</p>
+                    <p>Net Chg.</p>
+                    <p>Day Chg.</p>
                 </div>
-                <div className=" flex flex-row gap-4 justify-between ">
-                    <p>Instrument</p>
-                    <p>Trade Time</p>
-                    <p>Order ID</p>
-                    <p>Type</p>
-                    <p>Qty.</p>
-                    <p>Price</p>
-                </div>
-                <div className=" flex flex-row gap-4 justify-between ">
-                    <p>Instrument</p>
-                    <p>Trade Time</p>
-                    <p>Order ID</p>
-                    <p>Type</p>
-                    <p>Qty.</p>
-                    <p>Price</p>
-                </div>
-                <div className=" flex flex-row gap-4 justify-between ">
-                    <p>Instrument</p>
-                    <p>Trade Time</p>
-                    <p>Order ID</p>
-                    <p>Type</p>
-                    <p>Qty.</p>
-                    <p>Price</p>
-                </div>
-                <div className=" flex flex-row gap-4 justify-between ">
-                    <p>Instrument</p>
-                    <p>Trade Time</p>
-                    <p>Order ID</p>
-                    <p>Type</p>
-                    <p>Qty.</p>
-                    <p>Price</p>
-                </div>
-                <div className=" flex flex-row gap-4 justify-between ">
-                    <p>Instrument</p>
-                    <p>Trade Time</p>
-                    <p>Order ID</p>
-                    <p>Type</p>
-                    <p>Qty.</p>
-                    <p>Price</p>
-                </div>
+                {orders.map(order =>
+                    <div key={order._id} className=" flex flex-row gap-4 justify-between ">
+                        <p>{order.ticker}</p>
+                        <p>{order.createdAt}</p>
+                        <p>{order._id}</p>
+                        <p>{order.ordertype}</p>
+                        <p>{order.quantity}</p>
+                        <p>{order.price}</p>
+                        <p>Stale</p>
+                        <p>Stale</p>
+                    </div>
+                )}
             </div>
         </div>
     );
