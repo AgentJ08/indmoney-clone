@@ -32,27 +32,27 @@ const Footer = () => {
                     <p className=' font-semibold text-xl '>Explore Products</p>
                     <Link href={'/mutual-funds'}><p>Mutual Funds</p></Link>
                     <Link href={'/stocks'}><p>INDstocks</p></Link>
-                    <Link href={'/us-stocks'}><p>US Stocks</p></Link>
-                    <Link href={'/ipo'}><p>IPO</p></Link>
-                    <Link href={'/fixed-deposit'}><p>Fixed Deposit</p></Link>
+                    <Link href={'#'}><p>US Stocks</p></Link>
+                    <Link href={'#'}><p>IPO</p></Link>
+                    <Link href={'#'}><p>Fixed Deposit</p></Link>
                     <Link href={'/calculators'}><p>Calculators</p></Link>
-                    <Link href={'/check-free-credit-score'}><p>Credit Score</p></Link>
+                    <Link href={'#'}><p>Credit Score</p></Link>
                 </div>
                 <div className=' flex flex-col justify-center gap-4 '>
                     <p className=' font-semibold text-xl '>Company</p>
-                    <Link href={'/about'}><p>About Us</p></Link>
-                    <Link href={'/blog'}><p>Blog</p></Link>
-                    <Link href={'/privacy-policy'}><p>Privacy Policy</p></Link>
-                    <Link href={'/terms-of-services'}><p>Terms & Conditions</p></Link>
-                    <Link href={'/policy-center'}><p>Legal & Regulatory</p></Link>
-                    <Link href={'/grievance-redressal-policy'}><p>Grievance Redressal Policy</p></Link>
-                    <Link href={'/sitemap'}><p>Site Map</p></Link>
+                    <Link href={'#'}><p>About Us</p></Link>
+                    <Link href={'#'}><p>Blog</p></Link>
+                    <Link href={'#'}><p>Privacy Policy</p></Link>
+                    <Link href={'#'}><p>Terms & Conditions</p></Link>
+                    <Link href={'#'}><p>Legal & Regulatory</p></Link>
+                    <Link href={'#'}><p>Grievance Redressal Policy</p></Link>
+                    <Link href={'#'}><p>Site Map</p></Link>
                 </div>
             </div>
             <div className=' basis-1/6 flex flex-row justify-center '>
                 <div className=' flex flex-col justify-start gap-4 pt-[73px] pr-28 '>
                     <p className=' font-semibold text-xl '>Contacts</p>
-                    <Link href={'/customer-service'}><p>Customer Service</p></Link>
+                    <Link href={'#'}><p>Customer Service</p></Link>
                 </div>
             </div>
         </div>

@@ -15,19 +15,19 @@ const AccordianBox = () => {
                 <AccordionTrigger>Insure</AccordionTrigger>
                 <AccordionContent>
                     <div className=' flex flex-row gap-4 justify-start hover:text-blue-400 '>
-                        <Link href={'/insurance/term'}>
+                        <Link href={'#'}>
                             <div className=' flex flex-col gap-1 '>
                                 <Image src={'/accordionbox/life.avif'} alt='life' width={20} height={20} />
                                 <p>Life</p>
                             </div>
                         </Link>
-                        <Link href={'/insurance/group'}>
+                        <Link href={'#'}>
                             <div className=' flex flex-col gap-1 '>
                                 <Image src={'/accordionbox/health.avif'} alt='health' width={20} height={20} />
                                 <p>Health</p>
                             </div>
                         </Link>
-                        <Link href={'/insurance/topup'}>
+                        <Link href={'#'}>
                             <div className=' flex flex-col gap-1 '>
                                 <Image src={'/accordionbox/topup.avif'} alt='topup' width={20} height={20} />
                                 <p>Top-up</p>
@@ -46,7 +46,7 @@ const AccordianBox = () => {
                                 <p>Calculator</p>
                             </div>
                         </Link>
-                        <Link href={'/credit-score'}>
+                        <Link href={'#'}>
                             <div className=' flex flex-col gap-1 '>
                                 <Image src={'/accordionbox/credit_score.avif'} alt='health' width={20} height={20} />
                                 <p>Credit Score</p>
@@ -59,7 +59,7 @@ const AccordianBox = () => {
                 <AccordionTrigger>SIP</AccordionTrigger>
                 <AccordionContent>
                     <div className=' flex flex-row gap-4 justify-start hover:text-blue-400 '>
-                        <Link href={'/us-stocks'}>
+                        <Link href={'#'}>
                             <div className=' flex flex-col gap-1 '>
                                 <Image src={'/accordionbox/usstocks.avif'} alt='life' width={20} height={20} />
                                 <p>US Stocks</p>
@@ -84,7 +84,7 @@ const AccordianBox = () => {
                 <AccordionTrigger>Learn</AccordionTrigger>
                 <AccordionContent>
                     <div className=' flex flex-row gap-4 justify-start hover:text-blue-400 '>
-                        <Link href={'/ind-learn'}>
+                        <Link href={'#'}>
                             <div className=' flex flex-col gap-1 '>
                                 <Image src={'/accordionbox/learn.avif'} alt='life' width={20} height={20} />
                                 <p>IND Learn</p>
@@ -97,19 +97,19 @@ const AccordianBox = () => {
                 <AccordionTrigger>Help Center</AccordionTrigger>
                 <AccordionContent>
                     <div className=' flex flex-row gap-4 justify-start hover:text-blue-400 '>
-                        <Link href={'/help/my-tickets'}>
+                        <Link href={'#'}>
                             <div className=' flex flex-col gap-1 '>
                                 <Image src={'/accordionbox/life.avif'} alt='life' width={20} height={20} />
                                 <p>My Tickets</p>
                             </div>
                         </Link>
-                        <Link href={'/help'}>
+                        <Link href={'#'}>
                             <div className=' flex flex-col gap-1 '>
                                 <Image src={'/accordionbox/health.avif'} alt='health' width={20} height={20} />
                                 <p>FAQ&apos;s</p>
                             </div>
                         </Link>
-                        <Link href={'/help'}>
+                        <Link href={'#'}>
                             <div className=' flex flex-col gap-1 '>
                                 <Image src={'/accordionbox/topup.avif'} alt='topup' width={20} height={20} />
                                 <p>Support</p>

@@ -10,7 +10,6 @@ import {
 } from "@/components/ui/sheet"
 import Link from 'next/link'
 import Image from 'next/image'
-import { ScrollArea } from '@/components/ui/scroll-area'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
 import { Button } from '@/components/ui/button';
@@ -71,49 +70,49 @@ const DashboardSidebar = () => {
                     <div className=' pl-9 text-sm font-medium py-3 '>
                         <Link href={'/dashboard'} onClick={() => setSheetOpen(false)}>{user.name} (admin)</Link>
                     </div>
-                    <Link href={'/family-dashboard'} onClick={() => setSheetOpen(false)}>
+                    <Link href={'#'} onClick={() => setSheetOpen(false)}>
                         <div className=' flex flex-row gap-4 p-2 px-6 -mx-6 hover:bg-gray-100 '>
                             <Image src={'/dashboard.svg'} alt='dashboard icon' width={20} height={20} />
                             <p className=' text-[#757779] '>{lastname}&apos;s Family Dashboard</p>
                         </div>
                     </Link>
-                    <Link href={'/profile/manage-permissions'} onClick={() => setSheetOpen(false)}>
+                    <Link href={'#'} onClick={() => setSheetOpen(false)}>
                         <div className=' flex flex-row gap-4 p-2 px-6 -mx-6 hover:bg-gray-100 '>
                             <Image src={'/permission.svg'} alt='dashboard icon' width={20} height={20} />
                             <p className=' text-[#757779] '>My Permissions</p>
                         </div>
                     </Link>
-                    <Link href={'/widget/taxation'} onClick={() => setSheetOpen(false)}>
+                    <Link href={'#'} onClick={() => setSheetOpen(false)}>
                         <div className=' flex flex-row gap-4 p-2 px-6 -mx-6 hover:bg-gray-100 '>
                             <Image src={'/report.svg'} alt='dashboard icon' width={20} height={20} />
                             <p className=' text-[#757779] '>Tax Reports & Documents</p>
                         </div>
                     </Link>
-                    <Link href={'/widget/portfolio'} onClick={() => setSheetOpen(false)}>
+                    <Link href={'#'} onClick={() => setSheetOpen(false)}>
                         <div className=' flex flex-row gap-4 p-2 px-6 -mx-6 hover:bg-gray-100 '>
                             <Image src={'/preport.svg'} alt='dashboard icon' width={20} height={20} />
                             <p className=' text-[#757779] '>Portfolio Reports</p>
                         </div>
                     </Link>
-                    <Link href={'/articles'} onClick={() => setSheetOpen(false)}>
+                    <Link href={'#'} onClick={() => setSheetOpen(false)}>
                         <div className=' flex flex-row gap-4 p-2 px-6 -mx-6 hover:bg-gray-100 '>
                             <Image src={'/updates.svg'} alt='dashboard icon' width={20} height={20} />
                             <p className=' text-[#757779] '>Market Updates</p>
                         </div>
                     </Link>
-                    <Link href={'/profile/ind-assure'} onClick={() => setSheetOpen(false)}>
+                    <Link href={'#'} onClick={() => setSheetOpen(false)}>
                         <div className=' flex flex-row gap-4 p-2 px-6 -mx-6 hover:bg-gray-100 '>
                             <Image src={'/ind-assure.svg'} alt='dashboard icon' width={20} height={20} />
                             <p className=' text-[#757779] '>IND Assure</p>
                         </div>
                     </Link>
-                    <Link href={'/pricing'} onClick={() => setSheetOpen(false)}>
+                    <Link href={'#'} onClick={() => setSheetOpen(false)}>
                         <div className=' flex flex-row gap-4 p-2 px-6 -mx-6 hover:bg-gray-100 '>
                             <Image src={'/pricing.svg'} alt='dashboard icon' width={20} height={20} />
                             <p className=' text-[#757779] '>Pricing</p>
                         </div>
                     </Link>
-                    <Link href={'/policy-center'} onClick={() => setSheetOpen(false)}>
+                    <Link href={'#'} onClick={() => setSheetOpen(false)}>
                         <div className=' flex flex-row gap-4 p-2 px-6 -mx-6 hover:bg-gray-100 '>
                             <Image src={'/legal.svg'} alt='dashboard icon' width={20} height={20} />
                             <p className=' text-[#757779] '>Legal</p>
@@ -125,7 +124,7 @@ const DashboardSidebar = () => {
                             <p className=' text-[#757779] '>Calculators</p>
                         </div>
                     </Link>
-                    <Link href={'/help'} onClick={() => setSheetOpen(false)}>
+                    <Link href={'#'} onClick={() => setSheetOpen(false)}>
                         <div className=' flex flex-row gap-4 p-2 px-6 -mx-6 hover:bg-gray-100 '>
                             <Image src={'/help.svg'} alt='dashboard icon' width={20} height={20} />
                             <p className=' text-[#757779] '>Need Help?</p>

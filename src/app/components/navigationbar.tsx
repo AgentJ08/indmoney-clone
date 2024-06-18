@@ -76,28 +76,28 @@ export default function NavigationBar() {
                 </NavigationMenuItem>
               </NavigationMenu>
               <NavigationMenuItem>
-                <Link href="/learn" legacyBehavior passHref>
+                <Link href="#" legacyBehavior passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                     Learn
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link href="/features" legacyBehavior passHref>
+                <Link href="#" legacyBehavior passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                     Features
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link href="/pricing" legacyBehavior passHref>
+                <Link href="#" legacyBehavior passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                     Pricing
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link href="/blog" legacyBehavior passHref>
+                <Link href="#" legacyBehavior passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                     Blog
                   </NavigationMenuLink>
@@ -107,12 +107,12 @@ export default function NavigationBar() {
                 <NavigationMenuItem>
                   <NavigationMenuTrigger>Disclosure</NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <Link href="/comlaint-status">
+                    <Link href="#">
                       <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                         Complaint Status
                       </NavigationMenuLink>
                     </Link>
-                    <Link href="/sebi-invester-charter">
+                    <Link href="#">
                       <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                         SEBI Investor Charter
                       </NavigationMenuLink>
@@ -122,7 +122,7 @@ export default function NavigationBar() {
               </NavigationMenu>
             </NavigationMenuList>
             <button type="button" value="help centre" className=" ml-8 bg-[#F5F5F8] rounded-full p-2 ">
-              <Link href="/customer-service">
+              <Link href="#">
                 <Image
                   src={'/cs.png'}
                   alt="Customer Servive Button"
@@ -178,11 +178,11 @@ export default function NavigationBar() {
               </Link>
             </button>
             <button type="button" className=" ml-4 bg-[#F5F5F8] rounded-2xl px-4 py-2 ">
-              <Link href="/investments/fixed-deposits">Fixed Deposits
+              <Link href="#">Fixed Deposits
               </Link>
             </button>
             <button type="button" className=" ml-4 bg-[#F5F5F8] rounded-2xl px-4 py-2 ">
-              <Link href="/investments/us-stocks">US Stocks
+              <Link href="#">US Stocks
               </Link>
             </button>
             <button type="button" value="help centre" className=" ml-8 rounded-full p-2 ">
@@ -196,7 +196,7 @@ export default function NavigationBar() {
               </Link>
             </button>
             <button type="button" value="help centre" className=" ml-4 rounded-full p-2 ">
-              <Link href="/advisory-cards">
+              <Link href="#">
                 <Image
                   src={'/notification.png'}
                   alt="Customer Servive Button"

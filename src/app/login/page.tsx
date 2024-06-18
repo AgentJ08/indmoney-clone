@@ -32,12 +32,13 @@ export default function Home() {
     try {
       setLoading(true);
       const response = await axios.post("/api/users/login", user).
-      then(() => {toast({description: "Logged in successfully"})} );
+      then(() => {toast({description: "Logged in successfully", variant:'success'})} );
       router.push("/dashboard");
       router.refresh()
 
     } catch (error: any) {
       console.log("Login failed", error.message);
+      toast({description: "Log-in attempt unsuccessful", variant:'destructive'})
 
     } finally {
       setLoading(false);

@@ -63,7 +63,7 @@ const TickerChart = (props: any) => {
 
   const addtowatchlist = async (ticker: any, num: any) => {
     const response = await axios.post(`/api/stocks/${ticker}/addtowatchlist/${userid}_wl${num}`).
-      then(() => { toast({ description: `Successfully added to watchlist ${num}` }) })
+      then(() => { toast({ description: `Successfully added to watchlist ${num}`, variant:'success' }) })
   }
 
   const placeOrder = async (ticker: string, qty: number, ordertype: string, price: string) => {

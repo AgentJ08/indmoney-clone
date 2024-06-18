@@ -31,11 +31,12 @@ export default function Home() {
   const onSignup = async () => {
     try {
       const response = await axios.post("/api/users/signup", user).
-      then(() => {toast({description: "Sign up successful"})} );
+      then(() => {toast({description: "Sign up successful", variant:'success'})} );
       router.push("/login");
 
     } catch (error: any) {
       console.log("Signup failed", error.message);
+      toast({description: "Sign-up unsuccessful", variant:'destructive'})
     }
   }
 

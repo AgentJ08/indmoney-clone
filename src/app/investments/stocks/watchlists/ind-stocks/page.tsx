@@ -46,8 +46,9 @@ export default function Home() {
 
     const removefromwatchlist = async (ticker: any, num: any) => {
         const response = await axios.post(`/api/stocks/${ticker}/removefromwatchlist/${userid}_wl${num}`).
-            then(() => { toast({ description: "Reomved from watchlist successfully" }) })
-        router.refresh()
+            then(() => { toast({ description: `Removed from watchlist ${num} successfully`, variant: 'success' }) }).
+            finally(() => { router.refresh() });
+
     }
 
     return (
