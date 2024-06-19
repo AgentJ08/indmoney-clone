@@ -15,21 +15,35 @@ import {
 import Image from "next/image";
 import { Input } from "@/components/ui/input";
 import DashboardSidebar from "./dashboard/dashboardsidebar";
-import { useEffect, useState } from "react";
+import SearchResults from "./searchBar";
+import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 
 export default function NavigationBar() {
 
   const [user, setUser] = useState<boolean>(false)
+  const [search, setSearch] = useState<boolean>(false)
+  const [searchinput, setSearchinput] = useState<string>('')
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     getUserDetails();
-  })
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+  }, [])
 
   const getUserDetails = async () => {
     const res = await axios.get('/api/users/auth')
-    if(res.data.data.user) setUser(true);
+    if (res.data.data.user) setUser(true);
     else setUser(false);
+  }
+
+  const handleClickOutside = (event:any) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setSearch(false);
+    }
   }
 
 
@@ -55,7 +69,10 @@ export default function NavigationBar() {
                 height={20}
                 className=" ml-4 my-2.5 absolute "
               />
-              <Input type="text" placeholder="Search" className=" rounded-3xl pl-8 ml-2 " />
+              <div ref={dropdownRef}>
+                <Input type="text" placeholder="Search" className=" rounded-3xl pl-8 ml-2 " value={searchinput} onFocus={() => { setSearch(true); }} onChange={(e) => { setSearchinput(e.target.value) }} />
+                {search && <div onClick={() => { setSearch(false)}}><SearchResults input={searchinput} /></div>}
+              </div>
             </div>
             <NavigationMenuList className=" ml-24 ">
               <NavigationMenu>

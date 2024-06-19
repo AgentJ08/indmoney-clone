@@ -18,7 +18,7 @@ const StockDetails = () => {
   var ticker = usePathname();
   ticker = ticker.split('/')[2].toUpperCase();
 
-  if (ticker != "RELIANCE") redirect('/not-found');
+  if (ticker != "RELIANCE" && ticker != "TCS" && ticker != "HDFCBANK" && ticker != "ICICIBANK" && ticker != "BHARTIARTL" && ticker != "SBIN" && ticker != "LICI" && ticker != "INFY" && ticker != "HINDUNILVR" && ticker != "ITC" ) redirect('/not-found');
 
   useEffect(() => {
     const getStockData = async () => {

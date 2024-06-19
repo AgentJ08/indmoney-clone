@@ -58,7 +58,7 @@ const TickerChart = (props: any) => {
 
   const getUserId = async () => {
     const res = await axios.get('/api/users/me')
-    setUserid(res.data.data._id)
+    if(res.data.data) setUserid(res.data.data?._id)
   }
 
   const addtowatchlist = async (ticker: any, num: any) => {

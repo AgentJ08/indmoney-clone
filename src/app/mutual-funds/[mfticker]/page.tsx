@@ -21,7 +21,7 @@ const MFDetails = () => {
 
   // data = getStockData(mfticker);
 
-  if (mfticker != "ABSLPSU") redirect('/not-found');
+  if (mfticker != "ABSLPSU" && mfticker != "EDLBALADV" && mfticker != "HDFCBALADV" && mfticker != "ICICIBALADV" && mfticker != "KOTAKBALADV") redirect('/not-found');
   var widthpercent = 20;
 
   return (
